@@ -1,5 +1,8 @@
 package com.cloudmail.app.di
 
+import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
+
 import com.cloudmail.app.BuildConfig
 import com.cloudmail.app.data.local.db.AppDatabase
 import com.cloudmail.app.data.local.db.EmailDao
@@ -54,7 +57,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideDatabase(
-        @androidx.hilt.android.qualifiers.ApplicationContext context: android.content.Context
+        @ApplicationContext context: Context
     ): AppDatabase = AppDatabase.getInstance(context)
 
     @Provides
