@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- 简洁云朵 + 信封组合，白色前景 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M32,54 a14,14 0 1,1 8,-26 a17,17 0 0,1 32,0 a14,14 0 0,1 4,27.6 L32,54 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,58 L70,58 L70,74 L38,74 Z" />
+    <path
+        android:fillColor="#0EA5E9"
+        android:pathData="M38,58 L54,67 L70,58 L70,60 L54,69 L38,60 Z" />
+</vector>
