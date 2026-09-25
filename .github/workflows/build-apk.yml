@@ -36,12 +36,10 @@ jobs:
         run: |
           if [ -n "$KS_BASE64" ]; then
             echo "$KS_BASE64" | base64 -d > keystore.jks
-            cat > keystore.properties <<EOF
-          storeFile=keystore.jks
-          storePassword=$KS_PASS
-          keyAlias=$KEY_ALIAS
-          keyPassword=$KEY_PASS
-          EOF
+            echo "storeFile=keystore.jks" > keystore.properties
+            echo "storePassword=$KS_PASS" >> keystore.properties
+            echo "keyAlias=$KEY_ALIAS" >> keystore.properties
+            echo "keyPassword=$KEY_PASS" >> keystore.properties
             echo "signing configured"
           else
             echo "no signing secrets -> release will fall back to debug signing"
