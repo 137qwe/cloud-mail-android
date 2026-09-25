@@ -26,7 +26,7 @@ import com.cloudmail.app.ui.components.EmailListItem
 import com.cloudmail.app.ui.components.EmptyState
 import com.cloudmail.app.ui.components.LoadingBox
 import com.cloudmail.app.ui.viewmodel.StarViewModel
-import kotlinx.coroutines.flow.snapshotFlow
+import androidx.compose.runtime.snapshotFlow
 
 /**
  * 星标列表：手动刷新 + 触底加载 + 取消星标。

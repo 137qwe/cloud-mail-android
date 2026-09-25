@@ -1,5 +1,6 @@
 package com.cloudmail.app.ui.components
 
+import androidx.compose.animation.core.animateFloat
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -28,7 +29,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.cloudmail.app.ui.theme.BrandCyan
 import com.cloudmail.app.ui.theme.BrandGradient
+import com.cloudmail.app.ui.theme.BrandBlue
 import com.cloudmail.app.ui.theme.avatarGradient
 
 /** 渐变主按钮：品牌渐变底 + 白字，14dp 圆角 */
@@ -144,7 +147,7 @@ fun EmptyState(
             modifier = Modifier
                 .size(72.dp)
                 .clip(RoundedCornerShape(20.dp))
-                .background(BrandGradient.copy(alpha = 0.12f)),
+                .background(Brush.linearGradient(listOf(BrandBlue.copy(alpha = 0.12f), BrandCyan.copy(alpha = 0.12f)))),
             contentAlignment = Alignment.Center
         ) {
             Text("☁", fontSize = 34.sp)

@@ -41,7 +41,7 @@ import com.cloudmail.app.ui.components.LoadingBox
 import com.cloudmail.app.ui.theme.BrandGradient
 import com.cloudmail.app.ui.viewmodel.InboxViewModel
 import com.cloudmail.app.util.HtmlUtils
-import kotlinx.coroutines.flow.snapshotFlow
+import androidx.compose.runtime.snapshotFlow
 
 /**
  * 收件箱：账号切换 + 收件/已发 + 下拉刷新 + 触底加载 + 写信 FAB。

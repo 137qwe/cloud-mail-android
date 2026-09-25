@@ -52,7 +52,8 @@ class InboxViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            query.flatMapLatest { (accountId, type) ->
+            query.flatMapLatest { pair ->
+            pair?.let { (accountId, type) ->
                 if (accountId == 0L) flowOf(emptyList())
                 else emailDao.observeRecent(accountId, type, CACHE_LIMIT)
             }.collect { cached ->

@@ -35,7 +35,9 @@ import com.cloudmail.app.ui.components.GradientButton
 import com.cloudmail.app.ui.theme.BrandGradient
 import com.cloudmail.app.ui.theme.TextPrimaryLight
 import com.cloudmail.app.ui.viewmodel.AuthViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+
 
 /**
  * 登录 / 注册页：品牌渐变背景 + 圆润卡片。
@@ -43,7 +45,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
  */
 @Composable
 fun LoginScreen(
-    authViewModel: AuthViewModel = viewModel(),
+    authViewModel: AuthViewModel = hiltViewModel(),
     onLoggedIn: () -> Unit
 ) {
     var isRegister by remember { mutableStateOf(false) }
@@ -52,7 +54,7 @@ fun LoginScreen(
     var confirmPassword by remember { mutableStateOf("") }
     var regCode by remember { mutableStateOf("") }
 
-    val state by authViewModel.uiState
+    val state by authViewModel.uiState.collectAsStateWithLifecycle()
 
     LaunchedEffect(state.registered) {
         if (state.registered && !state.needManualLogin) {
