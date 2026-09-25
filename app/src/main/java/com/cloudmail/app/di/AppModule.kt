@@ -1,11 +1,6 @@
 package com.cloudmail.app.di
 
 import android.content.Context
-import dagger.hilt.android.qualifiers.ApplicationContext
-
-import android.content.Context
-import dagger.hilt.android.qualifiers.ApplicationContext
-
 import com.cloudmail.app.BuildConfig
 import com.cloudmail.app.data.local.db.AppDatabase
 import com.cloudmail.app.data.local.db.EmailDao
@@ -14,6 +9,7 @@ import com.cloudmail.app.network.AuthInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
