@@ -28,7 +28,9 @@ android {
         versionName = "1.0.0"
 
         // API 地址：默认指向你自己的 Cloud Mail 部署，编译时可用 -PapiBaseUrl 覆盖
-        val apiBaseUrl = (project.findProperty("apiBaseUrl") as String?) ?: "https://mail.example.com/"
+        val apiBaseUrl = (project.findProperty("apiBaseUrl") as String?)
+            ?.takeIf { it.isNotBlank() }
+            ?: "https://mail.example.com/"
         buildConfigField("String", "API_BASE_URL", "\"$apiBaseUrl\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
