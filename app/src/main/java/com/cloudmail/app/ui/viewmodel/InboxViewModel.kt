@@ -44,7 +44,6 @@ class InboxViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(UiState())
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
-    /** 当前查询维度（accountId, boxType），驱动 Room 缓存流 */
     private val query = MutableStateFlow<Pair<Long, Int>?>(null)
 
     private var refreshJob: Job? = null
@@ -53,9 +52,10 @@ class InboxViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             query.flatMapLatest { pair ->
-            pair?.let { (accountId, type) ->
-                if (accountId == 0L) flowOf(emptyList())
-                else emailDao.observeRecent(accountId, type, CACHE_LIMIT)
+                pair?.let { (accountId, type) ->
+                    if (accountId == 0L) flowOf(emptyList())
+                    else emailDao.observeRecent(accountId, type, CACHE_LIMIT)
+                } ?: flowOf(emptyList())
             }.collect { cached ->
                 _uiState.value = _uiState.value.copy(emails = cached)
             }
@@ -102,7 +102,6 @@ class InboxViewModel @Inject constructor(
         refresh()
     }
 
-    /** 下拉刷新：拉最新一页并替换本地缓存 */
     fun refresh() {
         val account = _uiState.value.selectedAccount ?: return
         refreshJob?.cancel()
@@ -123,7 +122,6 @@ class InboxViewModel @Inject constructor(
         }
     }
 
-    /** 触底加载更早邮件 */
     fun loadMore() {
         if (loadMoreJob?.isActive == true) return
         val state = _uiState.value
@@ -149,7 +147,6 @@ class InboxViewModel @Inject constructor(
             try {
                 mailRepository.markRead(listOf(emailId))
             } catch (_: Exception) {
-                // 标记已读失败不打断用户
             }
         }
     }
